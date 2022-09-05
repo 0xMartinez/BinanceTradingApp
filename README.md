@@ -2,14 +2,15 @@
 
 simple application for trading on Binance using Java library for interacting with the Binance API, TA4j, jFreeChart.
 
+Most things are hardcoded for now
+
 Features:
-* coin scanner for all USDT pairs on Binance,
+* application opens websockets at start to listen for updates foreach symbol,
+* user can change predefined condition in runtime for listener to print symbols with certain indicator value(cross EMA 9,26 for now only),
 * chart printer to visualize price,
 * trading strategy back-testing,
 * trading strategy live-trading,
-* for now there is 2 simple TA indicators cross EMA 9,26 and RSI 5,
 * possible time frames from 1 min to 1 week
 
-for now its scuffed af, it uses @EventListener and there is no really rest api here 
+http://localhost:8080/swagger-ui/index.html#
 
-Even now trading bot made around 1% profit on BTC/BUSD pair at bearish market in one day.
