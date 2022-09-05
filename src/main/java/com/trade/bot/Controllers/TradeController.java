@@ -7,27 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Closeable;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @RestController
-@RequestMapping(value = "/trade")
+@RequestMapping
 public class TradeController {
 
     @Autowired
     TradeService tradeService;
 
+    @GetMapping(value = "/printChart")
+    public void printChart(String pairName) throws IOException {
+        tradeService.printChart(pairName);
+    }
+
+    @PostMapping(value = "/setConditionForScanner")
+    public void addCondition(Boolean ifCrossEma926){
+        tradeService.addCondition(ifCrossEma926);
+    }
     @GetMapping(value = "/listen")
-    public void listenForCurrentTickerPrice(String pairName) throws IOException {
-     //   tradeService.getHistoricalData(pairName);
+    public void listenForMarketData() throws IOException {
+        tradeService.listenForMarketData();
     }
 
-    /*
-    @GetMapping(value = "/get")
-    public String getPrice(String ticker){
-        return tradeService.getPrice(ticker);
+    @GetMapping(value = "/importSymbolsToTextFile")
+    public void importSymbolsToFile() throws FileNotFoundException {
+        tradeService.importSymbolsToFile();
     }
-
-     */
 }

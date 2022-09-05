@@ -1,10 +1,8 @@
 package com.trade.bot.Models;
 
 import lombok.*;
-import org.ta4j.core.num.Num;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -13,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @ToString
 @Table(name = "float_data")
-public class TokenRawData {
+public class CandlestickData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +30,11 @@ public class TokenRawData {
     Float volume;
     @Column(name = "RSI")
     Double rsi;
+    @Column(name = "EMA9")
+    Double EMA9;
+    @Column(name = "EMA26")
+    Double EMA26;
+
 
 
 }
